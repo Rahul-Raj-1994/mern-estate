@@ -1,8 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function SignUp() {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({});
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -38,6 +40,7 @@ export default function SignUp() {
       setLoading(false);
       setError(null);
       console.log("data", data);
+      navigate("/sign-in");
     } catch (error) {
       setLoading(false);
       setError(error.message);
